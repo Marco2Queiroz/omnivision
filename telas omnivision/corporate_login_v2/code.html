@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OMNIVISION | ACCESS GATE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed-dim": "#00daf3",
+              "on-primary": "#00363a",
+              "inverse-on-surface": "#233240",
+              "surface-container-low": "#0d1d2a",
+              "on-secondary-container": "#c4abff",
+              "on-error": "#690005",
+              "on-error-container": "#ffdad6",
+              "surface-bright": "#2c3b49",
+              "surface": "#051522",
+              "on-surface": "#d4e4f7",
+              "on-tertiary-fixed-variant": "#004f58",
+              "on-primary-fixed": "#002022",
+              "error-container": "#93000a",
+              "primary": "#e1fdff",
+              "on-tertiary-fixed": "#001f24",
+              "error": "#ffb4ab",
+              "on-secondary-fixed-variant": "#5516be",
+              "on-surface-variant": "#b9cacb",
+              "surface-variant": "#273645",
+              "on-tertiary": "#00363d",
+              "inverse-surface": "#d4e4f7",
+              "on-background": "#d4e4f7",
+              "on-secondary": "#3c0091",
+              "outline-variant": "#3a494b",
+              "on-primary-container": "#006a71",
+              "on-secondary-fixed": "#23005c",
+              "secondary": "#d0bcff",
+              "surface-container-highest": "#273645",
+              "surface-dim": "#051522",
+              "surface-container-high": "#1c2b39",
+              "secondary-fixed-dim": "#d0bcff",
+              "outline": "#849495",
+              "surface-container-lowest": "#010f1c",
+              "primary-container": "#00f2ff",
+              "surface-container": "#11212f",
+              "on-tertiary-container": "#006a76",
+              "primary-fixed": "#74f5ff",
+              "secondary-container": "#571bc1",
+              "inverse-primary": "#00696f",
+              "tertiary-fixed": "#9cf0ff",
+              "background": "#051522",
+              "surface-tint": "#00dbe7",
+              "on-primary-fixed-variant": "#004f54",
+              "secondary-fixed": "#e9ddff",
+              "primary-fixed-dim": "#00dbe7",
+              "tertiary": "#e7fbff",
+              "tertiary-container": "#76ebff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>.glass-panel {
+    background: rgba(44, 59, 73, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 242, 255, 0.1)
+    }
+.glow-text {
+    text-shadow: 0 0 15px rgba(0, 242, 255, 0.5)
+    }
+.data-stream-bg {
+    background-image: linear-gradient(to bottom, rgba(5, 21, 34, 0.9), rgba(5, 21, 34, 0.8)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuAqM39b_peuEf1azg_Ri7wDICKElXNFpakPv6Y-k2z91X6VzIhbKKWTPSuiVs9RO1gIH-aQSpj7rBuaSux_Yk2OumOnI6M0PQhoMcDvCUlGf5gDR2hP6s9_yGss2RPSIWoNp6lNRWxMErgK-phw3PR3mDAvOiwN2hRtRkDjgQCNPp52wuC0rPc_pGo26sXvIcmtS320UumvMZmivXLfJ3VWXCnYYCyHFTFyj-qQfAnynq7ozaqc1jWC4e18fdd4onOsOKAdWXSn6l0);
+    background-size: cover;
+    background-position: center
+    }
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body min-h-screen flex items-center justify-center overflow-hidden">
+<!-- Abstract Background Element -->
+<div class="fixed inset-0 z-0 data-stream-bg" data-alt="high-tech digital data flow with glowing cyan circuit lines and deep navy blue background in a futuristic cinematic style"></div>
+<!-- Decorative Radial Glows -->
+<div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary-container/5 blur-[120px] z-0"></div>
+<div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-secondary-container/5 blur-[120px] z-0"></div>
+<!-- Login Container -->
+<main class="relative z-10 w-full max-w-md px-6">
+<div class="glass-panel p-10 lg:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col items-center">
+<!-- Brand Identity -->
+<div class="mb-12 text-center">
+<div class="flex items-center justify-center mb-4">
+<div class="w-12 h-12 bg-primary-container flex items-center justify-center rounded-lg shadow-[0_0_20px_rgba(0,242,255,0.4)]">
+<span class="material-symbols-outlined text-on-primary text-3xl" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+</div>
+<h1 class="font-headline font-extrabold text-3xl tracking-tighter text-primary-container glow-text mb-2">
+                    OMNIVISION
+                </h1>
+<p class="font-label text-outline text-[10px] uppercase tracking-[0.3em] font-bold">
+                    Executive Command Access
+                </p>
+</div>
+<!-- Access Form -->
+<form class="w-full space-y-8" onsubmit="return false;">
+<!-- Identity Input -->
+<div class="space-y-2 group">
+<label class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest font-bold block ml-1">
+                        Corporate Identifier
+                    </label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline text-lg">alternate_email</span>
+</div>
+<input class="w-full bg-surface-container-lowest border-none border-b border-outline-variant focus:border-primary-container focus:ring-0 text-on-surface pl-12 py-4 text-sm transition-all duration-300 placeholder:text-outline/40" placeholder="executive@omnivision.global" type="email"/>
+<div class="absolute bottom-0 left-0 w-0 h-[1px] bg-primary-container transition-all duration-500 group-focus-within:w-full shadow-[0_0_8px_rgba(0,242,255,0.8)]"></div>
+</div>
+</div>
+<!-- Primary Action -->
+<div class="space-y-4 pt-2">
+<button class="w-full bg-gradient-to-r from-primary-container to-tertiary-fixed-dim text-on-primary font-headline font-extrabold text-xs uppercase tracking-widest py-5 px-6 rounded-lg transition-all duration-300 hover:brightness-110 active:scale-[0.98] shadow-[0_0_15px_rgba(0,242,255,0.2)]">
+                        Request Magic Link
+                    </button>
+<div class="flex items-center gap-4">
+<div class="h-[1px] flex-grow bg-outline-variant/30"></div>
+<span class="text-[9px] font-label text-outline uppercase tracking-tighter">Secure Protocol V.4.2</span>
+<div class="h-[1px] flex-grow bg-outline-variant/30"></div>
+</div>
+<button class="w-full bg-surface-container-highest/30 border border-outline-variant/20 text-on-surface font-label font-semibold text-[10px] uppercase tracking-wider py-4 px-6 rounded-lg hover:bg-surface-container-highest/50 transition-colors">
+                        SAML Single Sign-On
+                    </button>
+</div>
+</form>
+<!-- Metadata/Footer -->
+<footer class="mt-12 w-full">
+<div class="grid grid-cols-2 gap-4 text-center">
+<div class="p-3 bg-surface-container-low/50 border border-outline-variant/10">
+<p class="text-[9px] text-outline uppercase tracking-widest mb-1">Encrypted</p>
+<p class="text-[10px] font-bold text-tertiary-fixed-dim">AES-256</p>
+</div>
+<div class="p-3 bg-surface-container-low/50 border border-outline-variant/10">
+<p class="text-[9px] text-outline uppercase tracking-widest mb-1">Station</p>
+<p class="text-[10px] font-bold text-tertiary-fixed-dim">NODE-741</p>
+</div>
+</div>
+<div class="mt-8 text-center">
+<a class="text-[10px] text-outline hover:text-primary-container transition-colors tracking-widest uppercase font-bold" href="#">
+                        Institutional Support Policy
+                    </a>
+</div>
+</footer>
+</div>
+<!-- System Status Bar -->
+<div class="mt-8 flex justify-between items-center px-4">
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse shadow-[0_0_5px_rgba(0,242,255,1)]"></div>
+<span class="text-[9px] font-bold text-outline tracking-widest uppercase">System Online</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-[9px] font-bold text-outline tracking-widest uppercase">Latency: 12ms</span>
+<span class="text-[9px] font-bold text-outline tracking-widest uppercase">Region: US-EAST</span>
+</div>
+</div>
+</main>
+<!-- Scanner Line (Signature Technical Interaction) -->
+<div class="fixed top-0 left-0 w-full h-[2px] bg-primary-container/20 shadow-[0_0_10px_rgba(0,242,255,0.3)] z-50 pointer-events-none opacity-20"></div>
+</body></html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OmniVision | Mobile Command</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed-dim": "#00daf3",
+              "on-primary": "#00363a",
+              "inverse-on-surface": "#233240",
+              "surface-container-low": "#0d1d2a",
+              "on-secondary-container": "#c4abff",
+              "on-error": "#690005",
+              "on-error-container": "#ffdad6",
+              "surface-bright": "#2c3b49",
+              "surface": "#051522",
+              "on-surface": "#d4e4f7",
+              "on-tertiary-fixed-variant": "#004f58",
+              "on-primary-fixed": "#002022",
+              "error-container": "#93000a",
+              "primary": "#e1fdff",
+              "on-tertiary-fixed": "#001f24",
+              "error": "#ffb4ab",
+              "on-secondary-fixed-variant": "#5516be",
+              "on-surface-variant": "#b9cacb",
+              "surface-variant": "#273645",
+              "on-tertiary": "#00363d",
+              "inverse-surface": "#d4e4f7",
+              "on-background": "#d4e4f7",
+              "on-secondary": "#3c0091",
+              "outline-variant": "#3a494b",
+              "on-primary-container": "#006a71",
+              "on-secondary-fixed": "#23005c",
+              "secondary": "#d0bcff",
+              "surface-container-highest": "#273645",
+              "surface-dim": "#051522",
+              "surface-container-high": "#1c2b39",
+              "secondary-fixed-dim": "#d0bcff",
+              "outline": "#849495",
+              "surface-container-lowest": "#010f1c",
+              "primary-container": "#00f2ff",
+              "surface-container": "#11212f",
+              "on-tertiary-container": "#006a76",
+              "primary-fixed": "#74f5ff",
+              "secondary-container": "#571bc1",
+              "inverse-primary": "#00696f",
+              "tertiary-fixed": "#9cf0ff",
+              "background": "#051522",
+              "surface-tint": "#00dbe7",
+              "on-primary-fixed-variant": "#004f54",
+              "secondary-fixed": "#e9ddff",
+              "primary-fixed-dim": "#00dbe7",
+              "tertiary": "#e7fbff",
+              "tertiary-container": "#76ebff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(44, 59, 73, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 242, 255, 0.1);
+        }
+        .scanner-line {
+            height: 1px;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, #00f2ff, transparent);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body min-h-screen pb-24">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-20 backdrop-blur-md bg-opacity-80 bg-[#051522] border-b border-cyan-900/20 shadow-[0_0_15px_rgba(0,242,255,0.05)]">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg overflow-hidden border border-primary-container/30">
+<img class="w-full h-full object-cover" data-alt="professional portrait of a high-level executive in a sharp suit with cool blue atmospheric lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJaKPBbZR1eY8AWtJoAMDjKgQjA5EPwmcuSPZlepzQ7fspzOQfB8rfWbM6xEp55xogtZimAnbrQgRIK0fMUqsbHsAWPxvIjM64bg5vOkzZeogNMnmiFSbgx2se2-_ezlPahFyqNR9TyfSGo3y__DbRTFFVprWDIyP6A6rLnOv4qmGPd7lN4ykTuDpdGL_Cuic8khW5ejrOK1fNC8Cjy2BsHXqMoQOcSO4MKBes5Olw-oz8tIKxLS6TxY-LTA9gGKfkRIJru12g8zE"/>
+</div>
+<span class="font-headline font-extrabold uppercase tracking-widest text-cyan-400 text-lg">COMMAND CENTER</span>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined text-cyan-400 text-2xl">notifications_active</span>
+<span class="absolute -top-1 -right-1 flex h-4 w-4">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
+<span class="relative inline-flex rounded-full h-4 w-4 bg-error text-[10px] items-center justify-center font-bold text-white">3</span>
+</span>
+</div>
+</nav>
+<!-- Content Canvas -->
+<main class="pt-24 px-4 space-y-6">
+<!-- Crisis Status Hero (Operational Summary) -->
+<section class="relative overflow-hidden rounded-lg bg-surface-container-lowest p-5 border-l-4 border-error shadow-[0_0_30px_rgba(147,0,10,0.1)]">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+<h2 class="font-headline text-error font-extrabold text-xs tracking-[0.2em] uppercase">Crisis Protocol Active</h2>
+</div>
+<h1 class="font-headline text-3xl font-extrabold text-primary tracking-tight mb-4">CRITICAL LOAD</h1>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1">
+<p class="text-[10px] text-outline uppercase tracking-wider font-bold">Latency</p>
+<p class="text-xl font-headline font-bold text-tertiary-fixed-dim">420ms</p>
+</div>
+<div class="space-y-1 text-right">
+<p class="text-[10px] text-outline uppercase tracking-wider font-bold">Threat Level</p>
+<p class="text-xl font-headline font-bold text-error">ELEVATED</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Asymmetric Stats Grid -->
+<section class="grid grid-cols-12 gap-4">
+<!-- Large Left Card -->
+<div class="col-span-7 glass-card p-4 rounded-lg flex flex-col justify-between min-h-[160px]">
+<div class="space-y-1">
+<span class="material-symbols-outlined text-primary-container">insights</span>
+<h3 class="text-[10px] text-outline font-bold uppercase tracking-widest">Efficiency</h3>
+</div>
+<div class="space-y-1">
+<div class="text-4xl font-headline font-extrabold text-primary">94.2%</div>
+<div class="text-[10px] text-primary-container flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> +2.1% FROM BASELINE
+                    </div>
+</div>
+</div>
+<!-- Dense Right Stack -->
+<div class="col-span-5 space-y-4">
+<div class="bg-surface-container p-4 rounded-lg border-b-2 border-secondary">
+<p class="text-[10px] text-outline font-bold uppercase tracking-widest mb-1">Uptime</p>
+<p class="text-lg font-headline font-bold text-on-surface">99.98%</p>
+</div>
+<div class="bg-surface-container p-4 rounded-lg border-b-2 border-tertiary-fixed-dim">
+<p class="text-[10px] text-outline font-bold uppercase tracking-widest mb-1">Nodes</p>
+<p class="text-lg font-headline font-bold text-on-surface">1,024</p>
+</div>
+</div>
+</section>
+<!-- Tactical Feed -->
+<section class="space-y-4">
+<div class="flex justify-between items-end px-1">
+<h3 class="font-headline font-extrabold text-sm tracking-widest uppercase text-cyan-400">Tactical Feed</h3>
+<span class="text-[10px] text-outline font-bold uppercase tracking-widest">Live Updates</span>
+</div>
+<!-- Feed Item 1 -->
+<div class="bg-surface-container-high p-4 rounded-lg border-l-2 border-primary-container flex gap-4 items-start">
+<div class="p-2 bg-primary-container/10 rounded">
+<span class="material-symbols-outlined text-primary-container text-xl">security</span>
+</div>
+<div class="flex-1 space-y-1">
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-bold text-primary-container uppercase">Security Override</span>
+<span class="text-[10px] text-outline">2m ago</span>
+</div>
+<p class="text-xs text-on-surface leading-relaxed">Unauthorized access attempt neutralized in Sector 7G. Perimeter re-locked.</p>
+</div>
+</div>
+<!-- Feed Item 2 -->
+<div class="bg-surface-container-high p-4 rounded-lg border-l-2 border-secondary flex gap-4 items-start">
+<div class="p-2 bg-secondary-container/10 rounded">
+<span class="material-symbols-outlined text-secondary text-xl">hub</span>
+</div>
+<div class="flex-1 space-y-1">
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-bold text-secondary uppercase">Network Expansion</span>
+<span class="text-[10px] text-outline">14m ago</span>
+</div>
+<p class="text-xs text-on-surface leading-relaxed">Node clusters optimized for peak operational capacity in APAC region.</p>
+</div>
+</div>
+</section>
+<!-- Technical Metadata Footer -->
+<footer class="pt-8 pb-12 flex flex-col items-center opacity-40">
+<div class="w-12 h-[1px] bg-outline-variant mb-4"></div>
+<p class="text-[9px] font-bold tracking-[0.3em] uppercase">System Version 4.8.0-Alpha</p>
+<p class="text-[8px] tracking-[0.1em] uppercase mt-1">Encrypted Omni-Link Established</p>
+</footer>
+</main>
+<!-- BottomNavBar (Active: Operational) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 backdrop-blur-xl bg-[#010f1c]/90 border-t border-white/5 shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
+<!-- Strategy / Home -->
+<button class="flex flex-col items-center justify-center text-slate-500 opacity-60 hover:opacity-100 hover:text-cyan-200 transition-all">
+<span class="material-symbols-outlined mb-1">insights</span>
+<span class="font-headline font-bold text-[10px] uppercase tracking-wider">Strategy</span>
+</button>
+<!-- Tactical / Alerts -->
+<button class="flex flex-col items-center justify-center text-slate-500 opacity-60 hover:opacity-100 hover:text-cyan-200 transition-all">
+<span class="material-symbols-outlined mb-1">tactic</span>
+<span class="font-headline font-bold text-[10px] uppercase tracking-wider">Tactical</span>
+</button>
+<!-- Operational (ACTIVE) -->
+<button class="flex flex-col items-center justify-center text-cyan-400 bg-cyan-950/30 rounded-lg py-1 px-3 shadow-[inset_0_0_10px_rgba(0,242,255,0.2)] brightness-125 transition-all">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">settings_input_component</span>
+<span class="font-headline font-bold text-[10px] uppercase tracking-wider">Operational</span>
+</button>
+<!-- Crisis / Search -->
+<button class="flex flex-col items-center justify-center text-slate-500 opacity-60 hover:opacity-100 hover:text-cyan-200 transition-all">
+<span class="material-symbols-outlined mb-1">warning</span>
+<span class="font-headline font-bold text-[10px] uppercase tracking-wider">Crisis</span>
+</button>
+</nav>
+<!-- Floating Action Button Contextual Check: Hidden for high-density dashboard focus -->
+</body></html>

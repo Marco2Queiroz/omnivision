@@ -20,6 +20,9 @@
 .DS_Store
 *.pem
 
+# Export Stitch / zip local (telas já estão em telas omnivision/)
+stitch*.zip
+
 # debug
 npm-debug.log*
 yarn-debug.log*
@@ -30,6 +33,11 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# PWA (gerado em build)
+public/sw.js
+public/workbox-*.js
+public/swe-worker-*.js
 
 # typescript
 *.tsbuildinfo

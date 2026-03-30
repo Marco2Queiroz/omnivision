@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OmniVision Executive Dashboard | Operational Pulse</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "outline": "#849495",
+                        "on-tertiary-fixed-variant": "#004f58",
+                        "outline-variant": "#3a494b",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "primary-fixed-dim": "#00dbe7",
+                        "secondary-container": "#571bc1",
+                        "error": "#ffb4ab",
+                        "surface": "#051522",
+                        "inverse-primary": "#00696f",
+                        "surface-dim": "#051522",
+                        "on-surface": "#d4e4f7",
+                        "tertiary": "#e7fbff",
+                        "on-tertiary-fixed": "#001f24",
+                        "on-secondary-container": "#c4abff",
+                        "on-error-container": "#ffdad6",
+                        "background": "#051522",
+                        "on-primary-container": "#006a71",
+                        "on-secondary": "#3c0091",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "on-primary": "#00363a",
+                        "inverse-surface": "#d4e4f7",
+                        "surface-container": "#11212f",
+                        "primary": "#e1fdff",
+                        "surface-tint": "#00dbe7",
+                        "tertiary-container": "#76ebff",
+                        "inverse-on-surface": "#233240",
+                        "surface-variant": "#273645",
+                        "secondary": "#d0bcff",
+                        "primary-fixed": "#74f5ff",
+                        "tertiary-fixed-dim": "#00daf3",
+                        "primary-container": "#00f2ff",
+                        "on-surface-variant": "#b9cacb",
+                        "on-primary-fixed-variant": "#004f54",
+                        "surface-container-lowest": "#010f1c",
+                        "surface-container-low": "#0d1d2a",
+                        "surface-container-high": "#1c2b39",
+                        "on-tertiary": "#00363d",
+                        "on-secondary-fixed": "#23005c",
+                        "on-primary-fixed": "#002022",
+                        "surface-bright": "#2c3b49",
+                        "on-background": "#d4e4f7",
+                        "secondary-fixed": "#e9ddff",
+                        "surface-container-highest": "#273645",
+                        "tertiary-fixed": "#9cf0ff",
+                        "on-error": "#690005",
+                        "on-tertiary-container": "#006a76"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .scanner-effect-hover:hover::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #00f2ff;
+            opacity: 0.4;
+            animation: scan 0.8s ease-in-out;
+        }
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+        .glass-panel {
+            background: rgba(44, 59, 73, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 242, 255, 0.2);
+        }
+        .neon-text-glow {
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-full flex flex-col py-8 bg-[#010f1c] dark:bg-[#010f1c] w-64 border-r border-[#3a494b]/20 shadow-[0_0_20px_rgba(0,242,255,0.05)] z-50">
+<div class="px-6 mb-12">
+<h1 class="text-xl font-extrabold text-[#00f2ff] tracking-widest uppercase font-headline">OmniVision</h1>
+<p class="text-[10px] text-[#76ebff]/60 uppercase tracking-widest mt-1">Executive Suite</p>
+</div>
+<nav class="flex-1 space-y-2 px-4">
+<a class="flex items-center gap-4 px-4 py-3 text-[#273645] hover:text-[#76ebff] transition-colors font-headline font-bold tracking-tight hover:bg-[#11212f] hover:shadow-[inset_0_0_10px_rgba(0,242,255,0.1)] rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+                Strategy
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#273645] hover:text-[#76ebff] transition-colors font-headline font-bold tracking-tight hover:bg-[#11212f] hover:shadow-[inset_0_0_10px_rgba(0,242,255,0.1)] rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="tactic">tactic</span>
+                Tactical
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#00f2ff] bg-[#11212f] border-r-2 border-[#00f2ff] font-headline font-bold tracking-tight shadow-[inset_0_0_10px_rgba(0,242,255,0.1)] rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
+                Operational
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#273645] hover:text-[#76ebff] transition-colors font-headline font-bold tracking-tight hover:bg-[#11212f] hover:shadow-[inset_0_0_10px_rgba(0,242,255,0.1)] rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+                Crisis
+            </a>
+</nav>
+<div class="mt-auto px-4 space-y-2">
+<div class="px-4 py-2 mb-4 bg-primary-container/10 border border-primary-container/20 rounded-lg">
+<p class="text-[10px] text-primary-container font-bold uppercase tracking-widest">System Status: Active</p>
+</div>
+<a class="flex items-center gap-4 px-4 py-2 text-[#273645] hover:text-[#76ebff] transition-colors font-headline font-bold text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+<a class="flex items-center gap-4 px-4 py-2 text-[#273645] hover:text-[#76ebff] transition-colors font-headline font-bold text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+                Support
+            </a>
+</div>
+</aside>
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 right-0 z-40 flex justify-between items-center px-10 h-20 w-[calc(100%-16rem)] bg-[#051522]/80 backdrop-blur-xl border-b border-[#3a494b]/15">
+<div class="flex items-center gap-8">
+<h2 class="font-headline font-bold text-sm uppercase tracking-widest text-[#00f2ff]">OmniVision Executive Dashboard</h2>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant text-sm">search</span>
+<input class="bg-surface-container-lowest border-none border-b border-primary/20 focus:ring-0 focus:border-primary text-xs tracking-widest w-64 pl-10 h-10 transition-all" placeholder="QUERY SYSTEM..." type="text"/>
+</div>
+</div>
+<nav class="flex items-center gap-10">
+<a class="font-headline font-bold text-sm uppercase tracking-widest text-[#76ebff]/60 hover:text-[#76ebff] transition-all scanner-effect-hover relative pb-1" href="#">Timeframe</a>
+<a class="font-headline font-bold text-sm uppercase tracking-widest text-[#76ebff]/60 hover:text-[#76ebff] transition-all scanner-effect-hover relative pb-1" href="#">Project</a>
+<a class="font-headline font-bold text-sm uppercase tracking-widest text-[#76ebff]/60 hover:text-[#76ebff] transition-all scanner-effect-hover relative pb-1" href="#">Owner</a>
+<div class="flex items-center gap-4 border-l border-outline-variant/30 pl-8">
+<button class="text-[#76ebff]/60 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-[#76ebff]/60 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="apps">apps</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/30">
+<img alt="Executive User Profile" data-alt="close up professional headshot of a futuristic executive in a clean tech environment with blue lighting accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJ45sO6uEEUkjZH5eWfie2IixTnSBfScPUrVktjTwAk-uhwVMryZiphaTNgCOijK5T1yabG-mqaF6iITFabEKCBFT4l-tlWsPNFtjNkiPMhfWgRkfbal3SkbaI5odndrXwGjJEJxn7Oa0HD35bSgIt3Dod-AsjXNH3S6dw_lajjwnA6LQprnmrKLDg3dmguSyQrYh6Db7uPeclNUNcF8S78I3bq4CVjTKGd7op75xdL4Oy2pcKXfEfbMD0lcUbsDxgImJT3iGL_Sc"/>
+</div>
+</div>
+</nav>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-32 p-10 min-h-screen">
+<!-- Header & Top Stats -->
+<div class="flex justify-between items-end mb-12">
+<div>
+<span class="text-primary-container font-headline font-extrabold text-sm tracking-widest uppercase block mb-2">Operational Pulse</span>
+<h3 class="text-5xl font-headline font-extrabold text-primary tracking-tighter">Command Overview</h3>
+</div>
+<div class="flex gap-12 text-right">
+<div>
+<p class="text-[10px] text-outline uppercase tracking-[0.2em] mb-1">System Version</p>
+<p class="font-headline font-bold text-tertiary">v2.8.4-OMEGA</p>
+</div>
+<div>
+<p class="text-[10px] text-outline uppercase tracking-[0.2em] mb-1">Encryption</p>
+<p class="font-headline font-bold text-primary-container">AES-256 QUANTUM</p>
+</div>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Hero Metric: Efficiency -->
+<div class="col-span-12 lg:col-span-8 glass-panel p-8 flex flex-col justify-between relative overflow-hidden h-[400px]">
+<div class="relative z-10 flex justify-between">
+<div>
+<h4 class="font-headline font-bold text-sm uppercase tracking-widest text-tertiary mb-1">Core Operational Efficiency</h4>
+<p class="text-xs text-outline tracking-wider">AGGREGATE REAL-TIME NETWORK PERFORMANCE</p>
+</div>
+<div class="flex items-center gap-2 text-primary-container">
+<span class="material-symbols-outlined text-lg" data-icon="trending_up">trending_up</span>
+<span class="font-bold tracking-widest">+1.2% VS LY</span>
+</div>
+</div>
+<div class="relative z-10 mt-auto">
+<div class="flex items-baseline gap-4">
+<span class="text-8xl font-headline font-extrabold text-primary neon-text-glow">94.2</span>
+<span class="text-4xl font-headline font-bold text-primary-container">%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-highest mt-6 relative overflow-hidden rounded-full">
+<div class="absolute top-0 left-0 h-full bg-gradient-to-r from-secondary-container to-primary-container w-[94.2%]"></div>
+<div class="absolute top-0 left-[94.2%] w-1 h-full bg-white shadow-[0_0_15px_#fff]"></div>
+</div>
+</div>
+<!-- Decorative Background Element -->
+<div class="absolute -right-20 -bottom-20 opacity-10">
+<span class="material-symbols-outlined text-[400px] text-primary" data-icon="hub">hub</span>
+</div>
+</div>
+<!-- Alerts: Critical Load -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container p-8 flex flex-col h-[400px]">
+<div class="flex items-center justify-between mb-8">
+<h4 class="font-headline font-bold text-sm uppercase tracking-widest text-error">Critical Alerts</h4>
+<span class="px-2 py-0.5 bg-error/10 text-error text-[10px] font-bold tracking-widest border border-error/20">LIVE FEED</span>
+</div>
+<div class="space-y-6 flex-1 overflow-y-auto pr-2 custom-scrollbar">
+<div class="p-4 bg-error-container/5 border-l-2 border-error hover:bg-error-container/10 transition-colors">
+<div class="flex justify-between mb-1">
+<span class="text-xs font-bold text-error tracking-widest uppercase">Node Overload</span>
+<span class="text-[10px] text-outline">02:44:12</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Cluster-7 experiencing high latency peaks. Load balancing initiated.</p>
+</div>
+<div class="p-4 bg-surface-container-highest border-l-2 border-outline-variant hover:border-primary transition-colors">
+<div class="flex justify-between mb-1">
+<span class="text-xs font-bold text-on-surface tracking-widest uppercase">Memory Spike</span>
+<span class="text-[10px] text-outline">02:41:05</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Unusual heap usage detected in Tactical Analytics Engine.</p>
+</div>
+<div class="p-4 bg-surface-container-highest border-l-2 border-outline-variant">
+<div class="flex justify-between mb-1">
+<span class="text-xs font-bold text-on-surface tracking-widest uppercase">Sync Delay</span>
+<span class="text-[10px] text-outline">01:58:30</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Secondary database mirrors lagging by 400ms.</p>
+</div>
+</div>
+</div>
+<!-- Tactical Feed: Live Overrides & Expansions -->
+<div class="col-span-12 lg:col-span-7 bg-surface-container-lowest p-10 border border-outline-variant/10">
+<div class="flex items-center justify-between mb-10">
+<div>
+<h4 class="font-headline font-bold text-lg uppercase tracking-tight text-primary">Tactical Intelligence Feed</h4>
+<p class="text-xs text-outline mt-1 uppercase tracking-widest">Global Security &amp; Expansion Events</p>
+</div>
+<button class="bg-primary text-on-primary text-[10px] font-bold px-6 py-2 tracking-widest uppercase rounded-sm hover:opacity-90 transition-opacity">Export Log</button>
+</div>
+<div class="space-y-4">
+<!-- Feed Item 1 -->
+<div class="grid grid-cols-12 gap-4 items-center py-4 border-b border-outline-variant/5 group hover:bg-surface-container/30 transition-all px-4 -mx-4">
+<div class="col-span-2 text-[10px] font-mono text-outline">14:55:02 UTC</div>
+<div class="col-span-1">
+<span class="material-symbols-outlined text-secondary" data-icon="security" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div class="col-span-6">
+<p class="text-sm font-bold text-tertiary">Security Override Authorized</p>
+<p class="text-xs text-outline-variant">Protocol: Sigma-9 | Location: Sector-C</p>
+</div>
+<div class="col-span-3 text-right">
+<span class="text-[10px] font-bold text-secondary uppercase tracking-widest">Level 4 Clearance</span>
+</div>
+</div>
+<!-- Feed Item 2 -->
+<div class="grid grid-cols-12 gap-4 items-center py-4 border-b border-outline-variant/5 group hover:bg-surface-container/30 transition-all px-4 -mx-4">
+<div class="col-span-2 text-[10px] font-mono text-outline">14:52:44 UTC</div>
+<div class="col-span-1">
+<span class="material-symbols-outlined text-primary-container" data-icon="language">language</span>
+</div>
+<div class="col-span-6">
+<p class="text-sm font-bold text-tertiary">Network Expansion Complete</p>
+<p class="text-xs text-outline-variant">New Node: Singapore-A2 | +400TB Traffic Cap</p>
+</div>
+<div class="col-span-3 text-right">
+<span class="text-[10px] font-bold text-primary-container uppercase tracking-widest">Propagation OK</span>
+</div>
+</div>
+<!-- Feed Item 3 -->
+<div class="grid grid-cols-12 gap-4 items-center py-4 border-b border-outline-variant/5 group hover:bg-surface-container/30 transition-all px-4 -mx-4">
+<div class="col-span-2 text-[10px] font-mono text-outline">14:48:19 UTC</div>
+<div class="col-span-1">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="refresh">refresh</span>
+</div>
+<div class="col-span-6">
+<p class="text-sm font-bold text-tertiary">System Integrity Scan</p>
+<p class="text-xs text-outline-variant">Status: Normal | All modules verified</p>
+</div>
+<div class="col-span-3 text-right">
+<span class="text-[10px] font-bold text-on-tertiary-container uppercase tracking-widest">Verified</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Global Map Visualization -->
+<div class="col-span-12 lg:col-span-5 glass-panel relative p-0 overflow-hidden min-h-[400px]">
+<div class="absolute inset-0 grayscale opacity-40 mix-blend-overlay">
+<img alt="Global Network Nodes Map" class="w-full h-full object-cover" data-alt="high contrast dark digital map of the world with cyan glowing nodes and intricate networking lines connecting global cities" data-location="Global" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF_N9bpj9UOEn3Whf5Z9IwCYdtKXeJYDfNJ_OXA_GtTMOvHs3irweFkg8nDL91ghqB-ye5HaesbVcrEdi34pgL75TTlmjKjfDThJC8NMGjHFgtB7Ut2LyzZJAKhmeRlU_HLoyH5UQlIJ7vuhxyQSbduY4drWOZq1MU96F1cuT15SEr6-F_EBLgY7u1fKZJxUntNR6BI3XJdz15o_MEjbucgkcRctzsyX0sRYW6B8wdYGV0ufUJ7_XzRgnUfmupKIPNCewOCd80fJg"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+<div class="relative z-10 p-8">
+<h4 class="font-headline font-bold text-sm uppercase tracking-widest text-primary mb-1">Global Presence</h4>
+<p class="text-[10px] text-outline tracking-widest uppercase">28 Active Node Regions</p>
+</div>
+<div class="absolute bottom-8 left-8 z-10 space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary-container animate-pulse shadow-[0_0_8px_#00f2ff]"></div>
+<span class="text-xs font-bold tracking-widest uppercase text-on-surface">North America: 100% Stable</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary-container animate-pulse shadow-[0_0_8px_#00f2ff]"></div>
+<span class="text-xs font-bold tracking-widest uppercase text-on-surface">EMEA Clusters: 98.4% Stable</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-error animate-pulse shadow-[0_0_8px_#ffb4ab]"></div>
+<span class="text-xs font-bold tracking-widest uppercase text-error">APAC: Critical Load Observed</span>
+</div>
+</div>
+</div>
+</div>
+<!-- System Footer Metadata -->
+<footer class="mt-20 flex justify-between items-center py-8 border-t border-outline-variant/10">
+<div class="flex items-center gap-12">
+<div>
+<p class="text-[10px] text-outline uppercase tracking-widest mb-1">Data Latency</p>
+<p class="text-sm font-headline font-bold text-primary">0.02ms</p>
+</div>
+<div>
+<p class="text-[10px] text-outline uppercase tracking-widest mb-1">Active Users</p>
+<p class="text-sm font-headline font-bold text-tertiary">14,802</p>
+</div>
+<div>
+<p class="text-[10px] text-outline uppercase tracking-widest mb-1">Threat Level</p>
+<p class="text-sm font-headline font-bold text-secondary">LOW / NOMINAL</p>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-highest/50 hover:bg-surface-container-highest transition-colors text-[10px] font-bold tracking-widest uppercase border border-outline-variant/20">
+<span class="material-symbols-outlined text-sm" data-icon="terminal">terminal</span>
+                    System Logs
+                </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-highest/50 hover:bg-surface-container-highest transition-colors text-[10px] font-bold tracking-widest uppercase border border-outline-variant/20">
+<span class="material-symbols-outlined text-sm" data-icon="cloud_sync">cloud_sync</span>
+                    Manual Sync
+                </button>
+</div>
+</footer>
+</main>
+</body></html>

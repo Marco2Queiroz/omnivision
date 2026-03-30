@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OmniVision Tactical Alignment</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed-dim": "#00daf3",
+              "on-primary": "#00363a",
+              "inverse-on-surface": "#233240",
+              "surface-container-low": "#0d1d2a",
+              "on-secondary-container": "#c4abff",
+              "on-error": "#690005",
+              "on-error-container": "#ffdad6",
+              "surface-bright": "#2c3b49",
+              "surface": "#051522",
+              "on-surface": "#d4e4f7",
+              "on-tertiary-fixed-variant": "#004f58",
+              "on-primary-fixed": "#002022",
+              "error-container": "#93000a",
+              "primary": "#e1fdff",
+              "on-tertiary-fixed": "#001f24",
+              "error": "#ffb4ab",
+              "on-secondary-fixed-variant": "#5516be",
+              "on-surface-variant": "#b9cacb",
+              "surface-variant": "#273645",
+              "on-tertiary": "#00363d",
+              "inverse-surface": "#d4e4f7",
+              "on-background": "#d4e4f7",
+              "on-secondary": "#3c0091",
+              "outline-variant": "#3a494b",
+              "on-primary-container": "#006a71",
+              "on-secondary-fixed": "#23005c",
+              "secondary": "#d0bcff",
+              "surface-container-highest": "#273645",
+              "surface-dim": "#051522",
+              "surface-container-high": "#1c2b39",
+              "secondary-fixed-dim": "#d0bcff",
+              "outline": "#849495",
+              "surface-container-lowest": "#010f1c",
+              "primary-container": "#00f2ff",
+              "surface-container": "#11212f",
+              "on-tertiary-container": "#006a76",
+              "primary-fixed": "#74f5ff",
+              "secondary-container": "#571bc1",
+              "inverse-primary": "#00696f",
+              "tertiary-fixed": "#9cf0ff",
+              "background": "#051522",
+              "surface-tint": "#00dbe7",
+              "on-primary-fixed-variant": "#004f54",
+              "secondary-fixed": "#e9ddff",
+              "primary-fixed-dim": "#00dbe7",
+              "tertiary": "#e7fbff",
+              "tertiary-container": "#76ebff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(44, 59, 73, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 242, 255, 0.1);
+        }
+        .neon-glow-primary {
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.15);
+        }
+        .neon-glow-error {
+            box-shadow: 0 0 25px rgba(147, 0, 10, 0.4);
+        }
+        .scanner-line {
+            position: relative;
+            overflow: hidden;
+        }
+        .scanner-line::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(0, 242, 255, 0.4), transparent);
+        }
+        .scanner-line:hover::after {
+            animation: scan 1.5s ease-in-out infinite;
+        }
+        @keyframes scan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar Execution -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-20 backdrop-blur-md bg-[#051522]/80 border-b border-cyan-900/20 shadow-[0_0_15px_rgba(0,242,255,0.05)]">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest border border-outline-variant flex items-center justify-center overflow-hidden">
+<img alt="Executive Profile" class="w-full h-full object-cover" data-alt="professional executive profile avatar with minimalist digital features and sharp lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP7sm7Wem7W5HrnAY_NVc9pWtx_tYAzlhuuLuEhuFWriLBOFGUbp8kO_fO8iAAsawnm7JFgigboX5qJjFl1DPcl3etF-O_zbF3gWU78yaTrYCO4tw89RXy6eg5XycgEmVwsqKjRan1p2y1SsVQXhW6VQGkkQ9o8A1z8DVGMhQFs7P2TIttFQVrDknxhk9sZUI09bbX1LWCuRvcQCtfjUxmRlS3TPk0irA4A8AbPhdqSbwE1B7oFgFLzdaBIkF28w12QEkCXU1IHrU"/>
+</div>
+<span class="text-xl font-extrabold text-cyan-400 tracking-tighter font-headline">COMMAND CENTER</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-headline font-extrabold uppercase tracking-widest text-slate-500 hover:text-cyan-300 transition-colors duration-300" href="#">Strategy</a>
+<a class="font-headline font-extrabold uppercase tracking-widest text-cyan-400" href="#">Tactical</a>
+<a class="font-headline font-extrabold uppercase tracking-widest text-slate-500 hover:text-cyan-300 transition-colors duration-300" href="#">Operational</a>
+<a class="font-headline font-extrabold uppercase tracking-widest text-slate-500 hover:text-cyan-300 transition-colors duration-300" href="#">Crisis</a>
+</nav>
+<button class="text-cyan-400 hover:text-cyan-300 transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+</button>
+</header>
+<main class="pt-28 pb-32 px-6 max-w-[1400px] mx-auto">
+<!-- Hero Section: Portfolio Health -->
+<section class="mb-12">
+<div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-8">
+<div>
+<h1 class="text-display-sm font-headline font-extrabold text-primary mb-2 tracking-tight">OMNIVISION TACTICAL ALIGNMENT</h1>
+<p class="text-on-surface-variant font-label uppercase tracking-[0.2em] text-xs">System Status: Optimal • Synchronization Active</p>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-2 bg-gradient-to-r from-primary-container to-surface-tint text-on-primary font-bold rounded-lg shadow-[0_0_15px_rgba(0,242,255,0.3)] hover:brightness-110 transition-all active:scale-95">
+                        GENERATE REPORT
+                    </button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<!-- Glowing Portfolio Health Cards -->
+<div class="glass-panel p-8 rounded-lg scanner-line">
+<span class="text-xs font-label text-outline uppercase tracking-widest block mb-4">Portfolio Velocity</span>
+<div class="flex items-baseline gap-2">
+<span class="text-5xl font-headline font-extrabold text-primary-container drop-shadow-[0_0_8px_rgba(0,242,255,0.5)]">94.2</span>
+<span class="text-primary-container/60 font-bold">%</span>
+</div>
+<div class="mt-4 h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[94%] shadow-[0_0_10px_rgba(0,242,255,0.8)]"></div>
+</div>
+</div>
+<div class="glass-panel p-8 rounded-lg scanner-line">
+<span class="text-xs font-label text-outline uppercase tracking-widest block mb-4">Strategic Drift</span>
+<div class="flex items-baseline gap-2">
+<span class="text-5xl font-headline font-extrabold text-tertiary-fixed-dim drop-shadow-[0_0_8px_rgba(0,218,243,0.5)]">0.04</span>
+<span class="text-tertiary-fixed-dim/60 font-bold">ms</span>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-sm" data-icon="trending_down">trending_down</span>
+<span class="text-xs text-tertiary-fixed-dim/80 font-bold">-12% FROM PEAK</span>
+</div>
+</div>
+<div class="glass-panel p-8 rounded-lg scanner-line">
+<span class="text-xs font-label text-outline uppercase tracking-widest block mb-4">Active Workflows</span>
+<div class="flex items-baseline gap-2">
+<span class="text-5xl font-headline font-extrabold text-secondary drop-shadow-[0_0_8px_rgba(208,188,255,0.5)]">1,284</span>
+</div>
+<div class="mt-4 flex gap-1">
+<div class="h-1 flex-1 bg-secondary shadow-[0_0_5px_rgba(208,188,255,0.5)]"></div>
+<div class="h-1 flex-1 bg-secondary shadow-[0_0_5px_rgba(208,188,255,0.5)]"></div>
+<div class="h-1 flex-1 bg-secondary shadow-[0_0_5px_rgba(208,188,255,0.5)]"></div>
+<div class="h-1 flex-1 bg-surface-container-highest"></div>
+</div>
+</div>
+<div class="bg-error-container/20 border border-error/30 p-8 rounded-lg neon-glow-error flex flex-col justify-between">
+<div>
+<span class="text-xs font-label text-error uppercase tracking-widest block mb-4">Blocked Items Count</span>
+<div class="flex items-baseline gap-2">
+<span class="text-5xl font-headline font-extrabold text-error drop-shadow-[0_0_12px_rgba(255,180,171,0.6)]">12</span>
+</div>
+</div>
+<div class="bg-error/10 p-2 rounded flex items-center gap-3">
+<span class="material-symbols-outlined text-error" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="text-[10px] font-bold text-error uppercase">Immediate Intervention Required</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Cycle Time Bar Charts (Bento-style) -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<div class="bg-surface-container p-8 rounded-lg border border-outline-variant/10">
+<div class="flex justify-between items-center mb-10">
+<h3 class="text-title-md font-headline font-bold text-on-surface tracking-tight uppercase">Cycle Time Distribution</h3>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-surface-container-highest rounded-lg text-[10px] font-bold text-secondary uppercase border border-secondary/20">Alpha Node</span>
+<span class="px-3 py-1 bg-surface-container-highest rounded-lg text-[10px] font-bold text-outline uppercase border border-outline-variant/20">Beta Node</span>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-4 items-end h-64">
+<!-- Bar 1 -->
+<div class="flex flex-col items-center gap-3 h-full justify-end group">
+<div class="w-full bg-gradient-to-t from-secondary-container to-secondary rounded-t-sm h-[40%] group-hover:brightness-125 transition-all relative">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-mono text-secondary opacity-0 group-hover:opacity-100">4.2d</div>
+</div>
+<span class="text-[10px] font-label text-outline-variant uppercase">Mon</span>
+</div>
+<!-- Bar 2 -->
+<div class="flex flex-col items-center gap-3 h-full justify-end group">
+<div class="w-full bg-gradient-to-t from-secondary-container to-secondary rounded-t-sm h-[65%] group-hover:brightness-125 transition-all relative">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-mono text-secondary opacity-0 group-hover:opacity-100">6.1d</div>
+</div>
+<span class="text-[10px] font-label text-outline-variant uppercase">Tue</span>
+</div>
+<!-- Bar 3 -->
+<div class="flex flex-col items-center gap-3 h-full justify-end group">
+<div class="w-full bg-gradient-to-t from-secondary-container to-secondary rounded-t-sm h-[85%] group-hover:brightness-125 transition-all relative border-t-2 border-primary-container shadow-[0_0_15px_rgba(0,242,255,0.2)]">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-mono text-secondary opacity-0 group-hover:opacity-100">8.4d</div>
+</div>
+<span class="text-[10px] font-label text-outline-variant uppercase">Wed</span>
+</div>
+<!-- Bar 4 -->
+<div class="flex flex-col items-center gap-3 h-full justify-end group">
+<div class="w-full bg-gradient-to-t from-secondary-container to-secondary rounded-t-sm h-[55%] group-hover:brightness-125 transition-all relative">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-mono text-secondary opacity-0 group-hover:opacity-100">5.2d</div>
+</div>
+<span class="text-[10px] font-label text-outline-variant uppercase">Thu</span>
+</div>
+<!-- Bar 5 -->
+<div class="flex flex-col items-center gap-3 h-full justify-end group">
+<div class="w-full bg-gradient-to-t from-secondary-container to-secondary rounded-t-sm h-[95%] group-hover:brightness-125 transition-all relative">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-mono text-secondary opacity-0 group-hover:opacity-100">9.1d</div>
+</div>
+<span class="text-[10px] font-label text-outline-variant uppercase">Fri</span>
+</div>
+<!-- Bar 6 -->
+<div class="flex flex-col items-center gap-3 h-full justify-end group">
+<div class="w-full bg-gradient-to-t from-secondary-container to-secondary rounded-t-sm h-[30%] group-hover:brightness-125 transition-all relative">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-mono text-secondary opacity-0 group-hover:opacity-100">2.8d</div>
+</div>
+<span class="text-[10px] font-label text-outline-variant uppercase">Sat</span>
+</div>
+<!-- Bar 7 -->
+<div class="flex flex-col items-center gap-3 h-full justify-end group">
+<div class="w-full bg-gradient-to-t from-secondary-container to-secondary rounded-t-sm h-[20%] group-hover:brightness-125 transition-all relative">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-mono text-secondary opacity-0 group-hover:opacity-100">1.4d</div>
+</div>
+<span class="text-[10px] font-label text-outline-variant uppercase">Sun</span>
+</div>
+</div>
+</div>
+<!-- Secondary Data Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-surface-container p-6 rounded-lg border border-outline-variant/10 scanner-line">
+<div class="flex items-center justify-between mb-6">
+<h4 class="text-sm font-headline font-bold text-on-surface uppercase">Regional Latency</h4>
+<span class="material-symbols-outlined text-primary-container text-sm" data-icon="public">public</span>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-xs text-outline">NA-EAST-1</span>
+<span class="text-xs font-mono text-primary-container">12ms</span>
+</div>
+<div class="h-[1px] w-full bg-outline-variant/20"></div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-outline">EU-CENTRAL-1</span>
+<span class="text-xs font-mono text-primary-container">48ms</span>
+</div>
+<div class="h-[1px] w-full bg-outline-variant/20"></div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-outline">AP-SOUTH-2</span>
+<span class="text-xs font-mono text-error">214ms</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container p-6 rounded-lg border border-outline-variant/10 flex items-center gap-6">
+<div class="w-20 h-20 rounded-full border-4 border-secondary/20 border-t-secondary relative flex items-center justify-center">
+<span class="text-xs font-bold text-secondary">82%</span>
+</div>
+<div>
+<h4 class="text-sm font-headline font-bold text-on-surface uppercase">Resource Load</h4>
+<p class="text-xs text-outline-variant mt-1 leading-relaxed">System resources are operating within nominal tactical parameters.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Execution Metrics Panel -->
+<div class="lg:col-span-4 space-y-6">
+<div class="bg-surface-container-high p-8 rounded-lg border border-primary-container/10">
+<h3 class="text-title-md font-headline font-bold text-on-surface tracking-tight uppercase mb-8">Execution Metrics</h3>
+<div class="space-y-10">
+<!-- Metric 1 -->
+<div>
+<div class="flex justify-between text-xs font-label uppercase tracking-wider mb-3">
+<span class="text-on-surface">Precision Alignment</span>
+<span class="text-primary-container">99.8%</span>
+</div>
+<div class="relative h-px w-full bg-outline-variant/30">
+<div class="absolute top-0 left-0 h-full bg-primary-container w-[99.8%] shadow-[0_0_8px_rgba(0,242,255,0.6)]"></div>
+<div class="absolute -top-1 left-[99.8%] w-2 h-2 bg-primary-container rounded-full shadow-[0_0_10px_rgba(0,242,255,1)]"></div>
+</div>
+</div>
+<!-- Metric 2 -->
+<div>
+<div class="flex justify-between text-xs font-label uppercase tracking-wider mb-3">
+<span class="text-on-surface">Deployment Velocity</span>
+<span class="text-primary-container">High</span>
+</div>
+<div class="relative h-px w-full bg-outline-variant/30">
+<div class="absolute top-0 left-0 h-full bg-primary-container w-[75%] shadow-[0_0_8px_rgba(0,242,255,0.6)]"></div>
+<div class="absolute -top-1 left-[75%] w-2 h-2 bg-primary-container rounded-full shadow-[0_0_10px_rgba(0,242,255,1)]"></div>
+</div>
+</div>
+<!-- Metric 3 -->
+<div>
+<div class="flex justify-between text-xs font-label uppercase tracking-wider mb-3">
+<span class="text-on-surface">Neural Convergence</span>
+<span class="text-tertiary-fixed-dim">Syncing</span>
+</div>
+<div class="relative h-px w-full bg-outline-variant/30">
+<div class="absolute top-0 left-0 h-full bg-tertiary-fixed-dim w-[42%] shadow-[0_0_8px_rgba(0,218,243,0.6)]"></div>
+<div class="absolute -top-1 left-[42%] w-2 h-2 bg-tertiary-fixed-dim rounded-full shadow-[0_0_10px_rgba(0,218,243,1)]"></div>
+</div>
+</div>
+<!-- Metric 4 -->
+<div>
+<div class="flex justify-between text-xs font-label uppercase tracking-wider mb-3">
+<span class="text-on-surface">Operational Uptime</span>
+<span class="text-primary-container">422d</span>
+</div>
+<div class="relative h-px w-full bg-outline-variant/30">
+<div class="absolute top-0 left-0 h-full bg-primary-container w-[100%] shadow-[0_0_8px_rgba(0,242,255,0.6)]"></div>
+<div class="absolute -top-1 left-[100%] w-2 h-2 bg-primary-container rounded-full shadow-[0_0_10px_rgba(0,242,255,1)]"></div>
+</div>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-outline-variant/10">
+<div class="flex items-center gap-4 p-4 bg-surface-container-lowest rounded-lg border border-outline-variant/20">
+<div class="flex-shrink-0 w-12 h-12 bg-secondary/10 flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-secondary" data-icon="intelligence">insights</span>
+</div>
+<div>
+<p class="text-[10px] font-label text-outline uppercase">AI Forecast</p>
+<p class="text-xs text-on-surface mt-1 font-semibold italic">"Optimization trend suggests 14% increase in tactical efficiency within next cycle."</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Asymmetric Image Section -->
+<div class="relative group overflow-hidden rounded-lg aspect-video bg-surface-container-highest">
+<img class="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="high-tech digital motherboard with glowing circuits and data streams in deep blue and neon cyan colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4WY5jNPcQKS1gfcWRc7y8a3aG2Aj1WFYlY0g74oRWyMDyRAvrVeXsv2elJ1I4Zz8fWPDYGrHHyiVbxCv3h52BoyxWhg6utIar1Oi7K55slFLJGXdZrCvOCQdoOIRdoI7n-EXAF9yzeFvpIiLcpnEGC3Bu6HIb4IushMt3Q0yU72ifes0xAXtW-3rxlkRhzc5vPdBGWTpSOlHUwJ9_K899G75-8yMTWiNnhwkzIv85f7gbq98vvU9xVkOZZPUDWXhaWM99WZV4Gfo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="px-2 py-1 bg-primary text-on-primary text-[8px] font-bold uppercase rounded">Node View</span>
+<p class="text-xs font-bold text-white mt-1">Holographic Grid #082</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Execution -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 backdrop-blur-xl bg-[#010f1c]/90 border-t border-white/5 shadow-[0_-4px_20px_rgba(0,0,0,0.5)] md:hidden">
+<a class="flex flex-col items-center justify-center text-slate-500 opacity-60 hover:opacity-100 hover:text-cyan-200 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="font-['Inter'] font-bold text-[10px] uppercase tracking-wider mt-1">Strategy</span>
+</a>
+<a class="flex flex-col items-center justify-center text-cyan-400 bg-cyan-950/30 rounded-lg py-1 px-3 shadow-[inset_0_0_10px_rgba(0,242,255,0.2)] brightness-125 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="tactic">tactic</span>
+<span class="font-['Inter'] font-bold text-[10px] uppercase tracking-wider mt-1">Tactical</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 opacity-60 hover:opacity-100 hover:text-cyan-200 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
+<span class="font-['Inter'] font-bold text-[10px] uppercase tracking-wider mt-1">Operational</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 opacity-60 hover:opacity-100 hover:text-cyan-200 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+<span class="font-['Inter'] font-bold text-[10px] uppercase tracking-wider mt-1">Crisis</span>
+</a>
+</nav>
+<!-- Floating Action Button (FAB) - Suppressed as per context check -->
+</body></html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OmniVision Executive Suite - Crisis War Room</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-low": "#0d1d2a",
+              "surface-container-highest": "#273645",
+              "on-background": "#d4e4f7",
+              "surface-dim": "#051522",
+              "tertiary-fixed-dim": "#00daf3",
+              "surface-tint": "#00dbe7",
+              "surface": "#051522",
+              "surface-container": "#11212f",
+              "primary-fixed-dim": "#00dbe7",
+              "on-tertiary-container": "#006a76",
+              "on-tertiary-fixed": "#001f24",
+              "on-primary-fixed-variant": "#004f54",
+              "primary": "#e1fdff",
+              "surface-container-lowest": "#010f1c",
+              "outline": "#849495",
+              "on-primary-fixed": "#002022",
+              "surface-bright": "#2c3b49",
+              "tertiary-fixed": "#9cf0ff",
+              "on-surface-variant": "#b9cacb",
+              "outline-variant": "#3a494b",
+              "primary-container": "#00f2ff",
+              "inverse-on-surface": "#233240",
+              "on-secondary": "#3c0091",
+              "secondary": "#d0bcff",
+              "primary-fixed": "#74f5ff",
+              "background": "#051522",
+              "secondary-fixed": "#e9ddff",
+              "tertiary": "#e7fbff",
+              "tertiary-container": "#76ebff",
+              "on-secondary-fixed-variant": "#5516be",
+              "error-container": "#93000a",
+              "surface-container-high": "#1c2b39",
+              "on-tertiary-fixed-variant": "#004f58",
+              "on-primary-container": "#006a71",
+              "on-primary": "#00363a",
+              "on-tertiary": "#00363d",
+              "surface-variant": "#273645",
+              "secondary-fixed-dim": "#d0bcff",
+              "inverse-primary": "#00696f",
+              "secondary-container": "#571bc1",
+              "on-error-container": "#ffdad6",
+              "inverse-surface": "#d4e4f7",
+              "on-secondary-fixed": "#23005c",
+              "on-secondary-container": "#c4abff",
+              "on-error": "#690005",
+              "on-surface": "#d4e4f7",
+              "error": "#ffb4ab",
+              "crisis-accent": "#ff3e3e",
+              "warning-accent": "#ffaa00"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(44, 59, 73, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 242, 255, 0.1);
+        }
+        .crisis-glow {
+            box-shadow: 0 0 30px rgba(255, 62, 62, 0.15);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scanner-line {
+            position: relative;
+            overflow: hidden;
+        }
+        .scanner-line::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00f2ff, transparent);
+            animation: scan 3s infinite linear;
+        }
+        @keyframes scan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body overflow-hidden">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-screen flex flex-col z-50 bg-[#051522] w-64 border-r border-[#3a494b]/20 shadow-[10px_0_30px_rgba(0,242,255,0.03)] font-['Plus_Jakarta_Sans'] font-bold tracking-tight">
+<div class="p-8">
+<div class="text-xl font-extrabold text-[#00f2ff] tracking-[0.2em]">LUMINOUS</div>
+<div class="text-[10px] text-slate-500 tracking-[0.4em] mt-1">AUTHORITY</div>
+</div>
+<div class="flex-1 px-4 space-y-2 mt-8">
+<div class="flex items-center px-4 py-3 text-slate-500 font-medium hover:bg-[#273645] hover:text-[#76ebff] transition-all duration-300 scale-[0.98] active:duration-100 cursor-pointer">
+<span class="material-symbols-outlined mr-4">account_tree</span>
+<span>Strategy</span>
+</div>
+<div class="flex items-center px-4 py-3 text-slate-500 font-medium hover:bg-[#273645] hover:text-[#76ebff] transition-all duration-300 scale-[0.98] active:duration-100 cursor-pointer">
+<span class="material-symbols-outlined mr-4">ads_click</span>
+<span>Tactical</span>
+</div>
+<div class="flex items-center px-4 py-3 text-slate-500 font-medium hover:bg-[#273645] hover:text-[#76ebff] transition-all duration-300 scale-[0.98] active:duration-100 cursor-pointer">
+<span class="material-symbols-outlined mr-4">settings_input_component</span>
+<span>Operational</span>
+</div>
+<!-- Active Tab: Crisis -->
+<div class="flex items-center px-4 py-3 text-[#00f2ff] bg-[#11212f] border-r-2 border-[#00f2ff] font-bold transition-all duration-300 cursor-pointer">
+<span class="material-symbols-outlined mr-4">warning</span>
+<span>Crisis</span>
+</div>
+</div>
+<div class="p-4 border-t border-[#3a494b]/20">
+<div class="flex items-center px-4 py-3 text-slate-500 font-medium hover:bg-[#273645] hover:text-[#76ebff] transition-all duration-300 cursor-pointer">
+<span class="material-symbols-outlined mr-4">settings</span>
+<span>Settings</span>
+</div>
+<div class="flex items-center px-4 py-3 text-slate-500 font-medium hover:bg-[#273645] hover:text-[#76ebff] transition-all duration-300 cursor-pointer">
+<span class="material-symbols-outlined mr-4">help_center</span>
+<span>Support</span>
+</div>
+<div class="mt-6 flex items-center px-4">
+<div class="w-10 h-10 bg-surface-container-highest rounded-full overflow-hidden border border-primary/20">
+<img alt="Commander Profile" class="w-full h-full object-cover opacity-80" data-alt="Commander Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnvhu1TVLGcQON0lmjvhgv1GQqJ0QSp_xMnB-C7odsJwiCPk1TvgRNzMSPloIYzIl8Hz-XoA3t2HioAVlYdb9kP4xn1keUcRpGFW8J67Tfgi9QC9HWE2WLvsyAJgUNo7cTwYHHSosExiAtyJ6TT1qZrgRjch6hB_aWOnULhKitGUJJTPi1LFo-BPWKDHH5gRtWki3B3XCOH7zrDmy3QI7KIyoVELMIb_ClgzKJsKrAEB4n24URvw5dejQVvwHA-NNdHm9R5ZurOKE"/>
+</div>
+<div class="ml-3">
+<div class="text-xs font-bold text-on-surface">COMMANDER</div>
+<div class="text-[10px] text-slate-500 uppercase">Authorized Access</div>
+</div>
+</div>
+</div>
+</nav>
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 flex items-center justify-between px-8 h-20 z-40 bg-[#051522]/80 backdrop-blur-md w-[calc(100%-16rem)] border-b border-[#3a494b]/20">
+<div class="flex items-center space-x-6">
+<div class="text-lg font-black text-[#00f2ff] font-['Plus_Jakarta_Sans'] uppercase tracking-widest">COMMAND CENTER</div>
+<div class="relative group">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-500 text-sm">search</span>
+<input class="bg-surface-container-lowest border-none border-b border-primary/20 focus:ring-0 focus:border-primary text-xs w-64 pl-10 py-2 text-on-surface uppercase tracking-tighter transition-all" placeholder="CRITICAL SYSTEM SEARCH..." type="text"/>
+</div>
+</div>
+<div class="flex items-center space-x-6">
+<div class="flex items-center space-x-4">
+<div class="p-2 text-slate-400 hover:text-[#00f2ff] hover:bg-[#11212f] rounded-sm transition-colors duration-200 cursor-pointer relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-crisis-accent rounded-full"></span>
+</div>
+<div class="p-2 text-slate-400 hover:text-[#00f2ff] hover:bg-[#11212f] rounded-sm transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined">grid_view</span>
+</div>
+<div class="p-2 text-slate-400 hover:text-[#00f2ff] hover:bg-[#11212f] rounded-sm transition-colors duration-200 cursor-pointer">
+<span class="material-symbols-outlined">account_circle</span>
+</div>
+</div>
+<div class="px-3 py-1 bg-crisis-accent/10 border border-crisis-accent/30 text-crisis-accent text-[10px] font-black tracking-widest animate-pulse">
+                HIGH ALERT
+            </div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-20 p-8 h-[calc(100vh-5rem)] overflow-y-auto bg-surface-dim">
+<!-- Header Section (Asymmetric) -->
+<div class="flex flex-col md:flex-row justify-between items-start gap-8 mb-10">
+<div class="flex-1">
+<div class="flex items-center gap-4 mb-2">
+<span class="w-3 h-3 bg-crisis-accent rounded-full animate-ping"></span>
+<h1 class="text-4xl font-extrabold font-headline tracking-tighter text-on-surface">Geo Uptime Crisis</h1>
+</div>
+<p class="text-slate-400 max-w-2xl font-body leading-relaxed">Incidente de infraestrutura crítica detectado em múltiplos clusters regionais. Protocolos de mitigação nível 4 ativados. Monitoramento de tráfego em tempo real priorizado.</p>
+</div>
+<div class="flex gap-4">
+<div class="glass-panel p-6 crisis-glow flex flex-col items-center justify-center min-w-[200px]">
+<span class="text-[10px] text-tertiary uppercase tracking-widest font-bold mb-1">Impact Radius</span>
+<span class="text-4xl font-black text-crisis-accent tracking-tighter">4,200<span class="text-xl">km</span></span>
+</div>
+<div class="glass-panel p-6 flex flex-col items-center justify-center min-w-[200px]">
+<span class="text-[10px] text-slate-400 uppercase tracking-widest font-bold mb-1">Critical Risk</span>
+<span class="text-4xl font-black text-warning-accent tracking-tighter">0.94<span class="text-xl">/1</span></span>
+</div>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Map Visualization (Large) -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container p-1 rounded-lg relative overflow-hidden h-[500px]">
+<div class="absolute inset-0 opacity-40 mix-blend-screen grayscale">
+<img alt="Threat Geometry Map" class="w-full h-full object-cover" data-alt="Topographic satellite view of global digital network nodes with glowing red hazard markers and connecting data lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-yCMbhqgFLSf1n_o9_GpEs83cYPaxJlbKQXdGG4qvjdyJ0q9Idh2ZSojcmwtHQmO68iG7eOrODyTaEqQNdHH06V7wTydBkqPtWCNaQVrLLSmwWP3nJXJ3LKWI3nkwV64JroPGpZnoeOdDc3sinBSetRsYN9youmDOlqKN8e5D3j4joVw6FdFVZ0XXjMHJrKwhYSlT0uyzmSH00vOjyO5ttMFmtS8mBVZAKC0zSeNDDRn7zv1fxezsGd0w8CNJc-JlG3u1TllRt8w"/>
+</div>
+<!-- Overlay Data -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<div class="absolute top-6 left-6 glass-panel p-4 z-10">
+<h3 class="text-xs font-black tracking-widest text-primary mb-3">LIVE THREAT GEOMETRY</h3>
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-[10px] font-mono text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-crisis-accent"></span> NODE_ALPHA: 45% LOSS
+                        </div>
+<div class="flex items-center gap-2 text-[10px] font-mono text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-warning-accent"></span> NODE_SIGMA: ROUTING_ERR
+                        </div>
+</div>
+</div>
+<div class="absolute bottom-6 right-6 flex gap-4">
+<div class="px-4 py-2 bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono">LAT: -23.5505 | LONG: -46.6333</div>
+<div class="px-4 py-2 bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono">STATUS: INTERCEPTING</div>
+</div>
+</div>
+<!-- Active Vectors (Vertical List) -->
+<div class="col-span-12 lg:col-span-4 space-y-6">
+<div class="bg-surface-container p-6 rounded-lg scanner-line h-full flex flex-col">
+<h3 class="text-sm font-black tracking-widest text-on-surface mb-6 flex justify-between">
+                        ACTIVE VECTORS
+                        <span class="text-crisis-accent text-[10px]">2 DETECTED</span>
+</h3>
+<div class="space-y-4 flex-1">
+<div class="p-4 bg-surface-container-high border-l-4 border-crisis-accent">
+<div class="flex justify-between items-start mb-2">
+<span class="text-xs font-bold text-on-surface">UDP Flood</span>
+<span class="text-[10px] px-2 py-0.5 bg-crisis-accent/20 text-crisis-accent">EXTREME</span>
+</div>
+<div class="text-[10px] text-slate-400 font-mono mb-3">Origin: Unknown (Proxy Chain)</div>
+<div class="w-full bg-surface-dim h-1.5 rounded-full overflow-hidden">
+<div class="bg-crisis-accent h-full w-[85%]"></div>
+</div>
+</div>
+<div class="p-4 bg-surface-container-high border-l-4 border-warning-accent">
+<div class="flex justify-between items-start mb-2">
+<span class="text-xs font-bold text-on-surface">DNS Poison</span>
+<span class="text-[10px] px-2 py-0.5 bg-warning-accent/20 text-warning-accent">MODERATE</span>
+</div>
+<div class="text-[10px] text-slate-400 font-mono mb-3">Target: Core Resolver v4</div>
+<div class="w-full bg-surface-dim h-1.5 rounded-full overflow-hidden">
+<div class="bg-warning-accent h-full w-[42%]"></div>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 py-3 bg-gradient-to-r from-secondary-container to-secondary text-on-secondary text-[10px] font-black tracking-[0.2em] rounded-lg hover:brightness-110 transition-all uppercase">
+                        Generate Counter-Protocol
+                    </button>
+</div>
+</div>
+<!-- Timeline Chart -->
+<div class="col-span-12 bg-surface-container p-8 rounded-lg">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h3 class="text-sm font-black tracking-widest text-on-surface">REAL-TIME INCIDENT TIMELINE</h3>
+<p class="text-[10px] text-slate-500 mt-1 uppercase">Packet Loss Peaks (Last 120 Seconds)</p>
+</div>
+<div class="flex gap-2">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="text-[10px] text-slate-400">Ingress</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-[10px] text-slate-400">Egress</span>
+</div>
+</div>
+</div>
+<div class="flex items-end justify-between h-32 gap-1 px-4 border-b border-outline-variant/20">
+<div class="flex-1 bg-primary-container/20 h-[30%] hover:bg-primary-container transition-all"></div>
+<div class="flex-1 bg-primary-container/20 h-[45%] hover:bg-primary-container transition-all"></div>
+<div class="flex-1 bg-primary-container/20 h-[25%] hover:bg-primary-container transition-all"></div>
+<div class="flex-1 bg-crisis-accent h-[90%] shadow-[0_0_15px_rgba(255,62,62,0.4)]"></div>
+<div class="flex-1 bg-primary-container/20 h-[60%] hover:bg-primary-container transition-all"></div>
+<div class="flex-1 bg-primary-container/20 h-[35%] hover:bg-primary-container transition-all"></div>
+<div class="flex-1 bg-primary-container/20 h-[40%] hover:bg-primary-container transition-all"></div>
+<div class="flex-1 bg-primary-container/20 h-[20%] hover:bg-primary-container transition-all"></div>
+<div class="flex-1 bg-crisis-accent h-[75%]"></div>
+<div class="flex-1 bg-primary-container/20 h-[55%] hover:bg-primary-container transition-all"></div>
+<div class="flex-1 bg-primary-container/20 h-[45%] hover:bg-primary-container transition-all"></div>
+<div class="flex-1 bg-primary-container/20 h-[30%] hover:bg-primary-container transition-all"></div>
+<div class="flex-1 bg-primary-container/20 h-[65%] hover:bg-primary-container transition-all"></div>
+<div class="flex-1 bg-primary-container/20 h-[80%] hover:bg-primary-container transition-all"></div>
+<div class="flex-1 bg-crisis-accent h-[100%] shadow-[0_0_20px_rgba(255,62,62,0.5)]"></div>
+<div class="flex-1 bg-primary-container/20 h-[40%] hover:bg-primary-container transition-all"></div>
+<div class="flex-1 bg-primary-container/20 h-[30%] hover:bg-primary-container transition-all"></div>
+<div class="flex-1 bg-primary-container/20 h-[50%] hover:bg-primary-container transition-all"></div>
+<div class="flex-1 bg-primary-container/20 h-[60%] hover:bg-primary-container transition-all"></div>
+<div class="flex-1 bg-primary-container/20 h-[45%] hover:bg-primary-container transition-all"></div>
+</div>
+</div>
+<!-- Mitigation Protocols Table -->
+<div class="col-span-12 bg-surface-container rounded-lg overflow-hidden mb-12">
+<div class="p-6 bg-surface-container-high border-b border-outline-variant/10">
+<h3 class="text-sm font-black tracking-widest text-on-surface uppercase">Mitigation Protocols</h3>
+</div>
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-[10px] text-slate-500 uppercase tracking-widest border-b border-outline-variant/10">
+<th class="px-8 py-4 font-black">ID</th>
+<th class="px-8 py-4 font-black">Protocol Name</th>
+<th class="px-8 py-4 font-black">System Load</th>
+<th class="px-8 py-4 font-black">Status</th>
+<th class="px-8 py-4 font-black text-right">Action</th>
+</tr>
+</thead>
+<tbody class="text-xs font-medium text-on-surface-variant">
+<tr class="border-b border-outline-variant/5 hover:bg-[#11212f] transition-colors">
+<td class="px-8 py-4 font-mono">MIT-X01</td>
+<td class="px-8 py-4 font-bold text-on-surface">Traffic Re-Routing (BGP)</td>
+<td class="px-8 py-4">
+<div class="flex items-center gap-3">
+<div class="w-24 bg-surface-dim h-1 rounded-full">
+<div class="bg-primary-container h-full w-[65%]"></div>
+</div>
+<span>65%</span>
+</div>
+</td>
+<td class="px-8 py-4">
+<span class="px-2 py-1 bg-primary-container/10 text-primary-container rounded-sm text-[10px]">STANDBY</span>
+</td>
+<td class="px-8 py-4 text-right">
+<button class="px-4 py-1.5 border border-primary-container/30 text-primary-container text-[10px] font-black uppercase tracking-widest hover:bg-primary-container hover:text-on-primary-container transition-all">Coordinate</button>
+</td>
+</tr>
+<tr class="border-b border-outline-variant/5 hover:bg-[#11212f] transition-colors">
+<td class="px-8 py-4 font-mono">MIT-K09</td>
+<td class="px-8 py-4 font-bold text-on-surface">Hardware Isolation (L3)</td>
+<td class="px-8 py-4">
+<div class="flex items-center gap-3">
+<div class="w-24 bg-surface-dim h-1 rounded-full">
+<div class="bg-primary-container h-full w-[12%]"></div>
+</div>
+<span>12%</span>
+</div>
+</td>
+<td class="px-8 py-4">
+<span class="px-2 py-1 bg-crisis-accent/10 text-crisis-accent rounded-sm text-[10px]">ACTIVE</span>
+</td>
+<td class="px-8 py-4 text-right">
+<button class="px-4 py-1.5 border border-crisis-accent/30 text-crisis-accent text-[10px] font-black uppercase tracking-widest hover:bg-crisis-accent hover:text-white transition-all">Terminate</button>
+</td>
+</tr>
+<tr class="hover:bg-[#11212f] transition-colors">
+<td class="px-8 py-4 font-mono">MIT-A44</td>
+<td class="px-8 py-4 font-bold text-on-surface">Payload scrubbing</td>
+<td class="px-8 py-4">
+<div class="flex items-center gap-3">
+<div class="w-24 bg-surface-dim h-1 rounded-full">
+<div class="bg-primary-container h-full w-[88%]"></div>
+</div>
+<span>88%</span>
+</div>
+</td>
+<td class="px-8 py-4">
+<span class="px-2 py-1 bg-warning-accent/10 text-warning-accent rounded-sm text-[10px]">QUEUED</span>
+</td>
+<td class="px-8 py-4 text-right">
+<button class="px-4 py-1.5 border border-primary-container/30 text-primary-container text-[10px] font-black uppercase tracking-widest hover:bg-primary-container hover:text-on-primary-container transition-all">Coordinate</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Suppressed for Crisis War Room focused state) -->
+</body></html>

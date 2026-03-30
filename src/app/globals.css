@@ -3,25 +3,38 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  min-height: 100%;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-background text-on-surface font-body antialiased;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .glass-panel {
+    background: rgba(44, 59, 73, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 242, 255, 0.1);
+  }
+
+  .glass-card {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(34, 211, 238, 0.1);
+  }
+
+  .scanner-hover {
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .scanner-hover:hover {
+    box-shadow: 0 0 24px rgba(0, 242, 255, 0.12);
+    border-color: rgba(0, 242, 255, 0.25);
   }
 }
