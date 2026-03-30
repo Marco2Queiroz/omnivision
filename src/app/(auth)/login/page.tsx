@@ -2,9 +2,9 @@ import { LoginForm } from "@/components/auth/LoginForm";
 import { Suspense } from "react";
 
 export default function LoginPage() {
-  const hasSupabase = Boolean(
-    process.env.NEXT_PUBLIC_SUPABASE_URL &&
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  const hasAppwrite = Boolean(
+    process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT &&
+      process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID,
   );
 
   return (
@@ -15,7 +15,7 @@ export default function LoginPage() {
         </div>
       }
     >
-      <LoginForm hasSupabase={hasSupabase} />
+      <LoginForm hasAppwrite={hasAppwrite} />
     </Suspense>
   );
 }

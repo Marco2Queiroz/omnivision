@@ -8,7 +8,7 @@ import { FilterBar } from "./FilterBar";
 
 type Props = {
   children: React.ReactNode;
-  supabaseConfigured: boolean;
+  appwriteConfigured: boolean;
 };
 
 function FilterSync() {
@@ -16,14 +16,14 @@ function FilterSync() {
   return null;
 }
 
-export function DashboardShell({ children, supabaseConfigured }: Props) {
+export function DashboardShell({ children, appwriteConfigured }: Props) {
   return (
     <div className="min-h-dvh bg-surface-dim text-on-surface">
       <Suspense fallback={null}>
         <FilterSync />
       </Suspense>
       <DashboardSidebar />
-      <DashboardHeader supabaseConfigured={supabaseConfigured} />
+      <DashboardHeader appwriteConfigured={appwriteConfigured} />
       <div className="relative z-10 pt-24 md:pl-56">
         <main className="mx-auto max-w-7xl px-4 pb-16 pt-4 md:px-6">
           <Suspense fallback={null}>

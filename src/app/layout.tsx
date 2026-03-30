@@ -1,3 +1,4 @@
+import { AppwritePing } from "@/components/providers/AppwritePing";
 import type { Metadata, Viewport } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
@@ -40,6 +41,7 @@ export default function RootLayout({
       <body
         className={`${plusJakarta.variable} ${inter.variable} min-h-dvh bg-background`}
       >
+        <AppwritePing />
         {children}
       </body>
     </html>

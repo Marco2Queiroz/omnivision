@@ -1,24 +1,27 @@
 "use client";
 
-import { createClient } from "@/lib/supabase/client";
+import { account } from "@/lib/appwrite";
 import { Bell, LogOut } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 type Props = {
-  supabaseConfigured: boolean;
+  appwriteConfigured: boolean;
 };
 
-export function DashboardHeader({ supabaseConfigured }: Props) {
+export function DashboardHeader({ appwriteConfigured }: Props) {
   const router = useRouter();
 
   async function signOut() {
-    if (!supabaseConfigured) {
+    if (!appwriteConfigured) {
       router.push("/login");
       return;
     }
-    const supabase = createClient();
-    await supabase.auth.signOut();
+    try {
+      await account.deleteSession({ sessionId: "current" });
+    } catch {
+      /* ignore */
+    }
     router.push("/login");
     router.refresh();
   }

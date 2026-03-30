@@ -1,12 +1,12 @@
 "use client";
 
-import { createClient } from "@/lib/supabase/client";
+import { account } from "@/lib/appwrite";
 import Link from "next/link";
 import { useState } from "react";
 
-type Props = { hasSupabase: boolean };
+type Props = { hasAppwrite: boolean };
 
-export function ForgotPasswordForm({ hasSupabase }: Props) {
+export function ForgotPasswordForm({ hasAppwrite }: Props) {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
@@ -15,25 +15,25 @@ export function ForgotPasswordForm({ hasSupabase }: Props) {
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     setMessage(null);
-    if (!hasSupabase) {
-      setMessage("Supabase não configurado no ambiente.");
+    if (!hasAppwrite) {
+      setMessage("Appwrite não configurado no ambiente.");
       return;
     }
     setLoading(true);
     try {
-      const supabase = createClient();
       const origin =
         typeof window !== "undefined" ? window.location.origin : "";
-      const { error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: `${origin}/auth/callback?next=/login`,
+      await account.createRecovery({
+        email,
+        url: `${origin}/recovery`,
       });
-      if (error) {
-        setMessage(error.message);
-        return;
-      }
       setSent(true);
-    } catch {
-      setMessage("Não foi possível enviar o e-mail.");
+    } catch (err: unknown) {
+      const msg =
+        err && typeof err === "object" && "message" in err
+          ? String((err as { message: string }).message)
+          : "Não foi possível enviar o e-mail.";
+      setMessage(msg);
     } finally {
       setLoading(false);
     }
@@ -46,7 +46,7 @@ export function ForgotPasswordForm({ hasSupabase }: Props) {
           Recuperação de acesso
         </h1>
         <p className="mt-2 text-sm text-on-surface-variant">
-          Enviaremos um link seguro para o e-mail corporativo cadastrado.
+          Enviaremos um link seguro para o e-mail cadastrado no Appwrite.
         </p>
         {sent ? (
           <p className="mt-6 text-sm text-primary-container">

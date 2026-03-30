@@ -12,9 +12,14 @@ export async function GET() {
         process.env.JIRA_EMAIL &&
         process.env.JIRA_API_TOKEN,
     ),
-    supabaseConfigured: Boolean(
-      process.env.NEXT_PUBLIC_SUPABASE_URL &&
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    appwriteConfigured: Boolean(
+      process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT &&
+        process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID,
+    ),
+    appwriteGeoConfigured: Boolean(
+      process.env.APPWRITE_API_KEY &&
+        process.env.APPWRITE_DATABASE_ID &&
+        process.env.APPWRITE_GEO_COLLECTION_ID,
     ),
   });
 }

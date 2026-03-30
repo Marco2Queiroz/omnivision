@@ -1,16 +1,16 @@
 "use client";
 
-import { createClient } from "@/lib/supabase/client";
+import { account } from "@/lib/appwrite";
 import { Bolt, Shield } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 type Props = {
-  hasSupabase: boolean;
+  hasAppwrite: boolean;
 };
 
-export function LoginForm({ hasSupabase }: Props) {
+export function LoginForm({ hasAppwrite }: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const next = searchParams.get("next") ?? "/dashboard";
@@ -22,27 +22,23 @@ export function LoginForm({ hasSupabase }: Props) {
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     setMessage(null);
-    if (!hasSupabase) {
+    if (!hasAppwrite) {
       setMessage(
-        "Configure NEXT_PUBLIC_SUPABASE_URL e NEXT_PUBLIC_SUPABASE_ANON_KEY no .env.local — ou use OMNI_DEV_SKIP_AUTH=true em desenvolvimento.",
+        "Configure NEXT_PUBLIC_APPWRITE_ENDPOINT e NEXT_PUBLIC_APPWRITE_PROJECT_ID no .env.local — ou use OMNI_DEV_SKIP_AUTH=true em desenvolvimento.",
       );
       return;
     }
     setLoading(true);
     try {
-      const supabase = createClient();
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-      if (error) {
-        setMessage(error.message);
-        return;
-      }
+      await account.createEmailPasswordSession({ email, password });
       router.replace(next);
       router.refresh();
-    } catch {
-      setMessage("Falha ao iniciar sessão.");
+    } catch (err: unknown) {
+      const msg =
+        err && typeof err === "object" && "message" in err
+          ? String((err as { message: string }).message)
+          : "Falha ao iniciar sessão.";
+      setMessage(msg);
     } finally {
       setLoading(false);
     }

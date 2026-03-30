@@ -7,13 +7,13 @@ export default function DashboardGroupLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const supabaseConfigured = Boolean(
-    process.env.NEXT_PUBLIC_SUPABASE_URL &&
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  const appwriteConfigured = Boolean(
+    process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT &&
+      process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID,
   );
 
   return (
-    <DashboardShell supabaseConfigured={supabaseConfigured}>
+    <DashboardShell appwriteConfigured={appwriteConfigured}>
       {children}
     </DashboardShell>
   );

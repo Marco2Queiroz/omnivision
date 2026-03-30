@@ -1,37 +1,35 @@
-import { createServerClient } from "@supabase/ssr";
-import { cookies } from "next/headers";
+import { getServerDatabases } from "@/lib/appwrite-server";
+import type { PlanoCriseGeo } from "@/types/geo";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!url || !key) {
-    return NextResponse.json(
-      { error: "Supabase não configurado" },
-      { status: 503 },
-    );
+  const databases = getServerDatabases();
+  const databaseId = process.env.APPWRITE_DATABASE_ID;
+  const collectionId = process.env.APPWRITE_GEO_COLLECTION_ID;
+
+  if (!databases || !databaseId || !collectionId) {
+    return NextResponse.json([]);
   }
 
-  const cookieStore = cookies();
-  const supabase = createServerClient(url, key, {
-    cookies: {
-      getAll() {
-        return cookieStore.getAll();
-      },
-      setAll() {
-        /* no-op em API route */
-      },
-    },
-  });
+  try {
+    const { documents } = await databases.listDocuments({
+      databaseId,
+      collectionId,
+    });
 
-  const { data, error } = await supabase
-    .from("planos_crise_geo")
-    .select("*")
-    .order("updated_at", { ascending: false });
+    const mapped: PlanoCriseGeo[] = documents.map((doc: Record<string, unknown>) => ({
+      id: String(doc.$id ?? doc.id ?? ""),
+      titulo: String(doc.titulo ?? ""),
+      descricao: doc.descricao != null ? String(doc.descricao) : null,
+      status: String(doc.status ?? "aberto") as PlanoCriseGeo["status"],
+      owner_name: doc.owner_name != null ? String(doc.owner_name) : null,
+      created_at: String(doc.$createdAt ?? doc.created_at ?? ""),
+      updated_at: String(doc.$updatedAt ?? doc.updated_at ?? ""),
+    }));
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json(mapped);
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : "Erro Appwrite";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
-
-  return NextResponse.json(data ?? []);
 }
