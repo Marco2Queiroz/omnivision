@@ -1,0 +1,51 @@
+import type { ProjectRecord } from "@/types/project";
+
+/** Dados de demonstração até import Excel / Appwrite */
+export const MOCK_PROJECTS: ProjectRecord[] = [
+  {
+    id: "1",
+    name: "Modernização do data lake",
+    category: "Projetos Estruturantes",
+    area: "Dados",
+    sponsor: "Diretoria TI",
+    status: "em_andamento",
+    startDate: "2025-06-01",
+    endDate: "2026-03-31",
+    plannedHours: 2000,
+    actualHours: 1567,
+    capex: 0,
+    description:
+      "Consolidação de fontes e camada de consumo analítico para áreas de negócio.",
+    updates: "Sprint 12: integração com catálogo concluída.",
+  },
+  {
+    id: "2",
+    name: "Portal de fornecedores",
+    category: "Projetos",
+    area: "Field Service",
+    sponsor: "Operações",
+    status: "em_negociacao",
+    startDate: "2026-01-15",
+    endDate: null,
+    plannedHours: 800,
+    actualHours: 120,
+    capex: 0,
+    description: "Autosserviço para ordens e SLA.",
+    updates: "Aguardando fechamento de escopo com jurídico.",
+  },
+  {
+    id: "3",
+    name: "Hardening SOC",
+    category: "Projetos",
+    area: "Segurança da Informação",
+    sponsor: "CISO",
+    status: "backlog",
+    startDate: null,
+    endDate: null,
+    plannedHours: 400,
+    actualHours: 0,
+    capex: 0,
+    description: "Playbooks e correlação de alertas.",
+    updates: "",
+  },
+];

@@ -66,7 +66,7 @@ export function FilterBar() {
         </label>
         <input
           type="text"
-          placeholder="ex: GEO"
+          placeholder="ex: frente A"
           value={projectKey ?? ""}
           onChange={(e) =>
             setFilters({ projectKey: e.target.value || null })
@@ -76,7 +76,7 @@ export function FilterBar() {
       </div>
       <div className="flex min-w-[120px] flex-col gap-1">
         <label className="text-[10px] font-bold uppercase text-outline">
-          Responsável (Jira)
+          Responsável
         </label>
         <input
           type="text"

@@ -1,37 +1,25 @@
 "use client";
 
-import { useFilterUrlSync } from "@/hooks/useFilterUrlSync";
-import { Suspense } from "react";
-import { DashboardHeader } from "./DashboardHeader";
-import { DashboardSidebar } from "./DashboardSidebar";
-import { FilterBar } from "./FilterBar";
+import { DashboardChrome } from "@/components/layout/DashboardChrome";
+import { DashboardAccessProvider } from "@/contexts/DashboardAccessContext";
+import type { DashboardAccessState } from "@/lib/dashboard-access";
 
 type Props = {
   children: React.ReactNode;
   appwriteConfigured: boolean;
+  access: DashboardAccessState;
 };
 
-function FilterSync() {
-  useFilterUrlSync();
-  return null;
-}
-
-export function DashboardShell({ children, appwriteConfigured }: Props) {
+export function DashboardShell({
+  children,
+  appwriteConfigured,
+  access,
+}: Props) {
   return (
-    <div className="min-h-dvh bg-surface-dim text-on-surface">
-      <Suspense fallback={null}>
-        <FilterSync />
-      </Suspense>
-      <DashboardSidebar />
-      <DashboardHeader appwriteConfigured={appwriteConfigured} />
-      <div className="relative z-10 pt-24 md:pl-56">
-        <main className="mx-auto max-w-7xl px-4 pb-16 pt-4 md:px-6">
-          <Suspense fallback={null}>
-            <FilterBar />
-          </Suspense>
-          <div className="mt-8">{children}</div>
-        </main>
-      </div>
-    </div>
+    <DashboardAccessProvider value={access}>
+      <DashboardChrome appwriteConfigured={appwriteConfigured}>
+        {children}
+      </DashboardChrome>
+    </DashboardAccessProvider>
   );
 }

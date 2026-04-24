@@ -3,8 +3,8 @@ export type GlobalFilters = {
   dateFrom: string | null;
   /** ISO date string (yyyy-mm-dd) fim do intervalo */
   dateTo: string | null;
-  /** Chave ou nome do projeto Jira */
+  /** Filtro por projeto / frente (ex.: código ou nome) */
   projectKey: string | null;
-  /** Account ID Jira ou nome para JQL assignee */
+  /** Filtro por responsável (e-mail, nome ou ID interno) */
   responsibleId: string | null;
 };

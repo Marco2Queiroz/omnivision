@@ -1,8 +1,7 @@
 import { DashboardShell } from "@/components/layout/DashboardShell";
+import { getDashboardAccessState } from "@/lib/dashboard-access";
 
-export const dynamic = "force-dynamic";
-
-export default function DashboardGroupLayout({
+export default async function DashboardGroupLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -11,9 +10,13 @@ export default function DashboardGroupLayout({
     process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT &&
       process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID,
   );
+  const access = await getDashboardAccessState();
 
   return (
-    <DashboardShell appwriteConfigured={appwriteConfigured}>
+    <DashboardShell
+      appwriteConfigured={appwriteConfigured}
+      access={access}
+    >
       {children}
     </DashboardShell>
   );

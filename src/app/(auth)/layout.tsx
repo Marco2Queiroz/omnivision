@@ -10,10 +10,10 @@ export default function AuthLayout({
         style={{
           backgroundSize: "40px 40px",
           backgroundImage:
-            "radial-gradient(circle, #3a494b 1px, transparent 1px)",
+            "radial-gradient(circle, rgba(64,72,93,0.35) 1px, transparent 1px)",
         }}
       />
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-container/5 blur-[120px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[120px]" />
       {children}
     </div>
   );

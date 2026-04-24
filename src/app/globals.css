@@ -2,39 +2,275 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  color-scheme: dark;
-}
+/* Midnight Matrix (dark) — tema escuro: OneDrive …/tema escuro/midnight_matrix/DESIGN.md + code.html */
+/* Crystal Matrix (light) — tema claro: pasta tema claro / portfólio + crystal_matrix */
+@layer base {
+  /* Tema escuro: html:not(.light) evita :root a competir com html.light (FOUC). Sem classe = escuro. */
+  html:not(.light) {
+    color-scheme: dark;
+    /* Raios — Midnight Matrix (desktop home / gestão / config code.html): DEFAULT menor, full ≠ pill infinito */
+    --radius-default: 0.125rem;
+    --radius-lg: 0.25rem;
+    --radius-xl: 0.5rem;
+    --radius-full: 0.75rem;
+    --color-background: #060e20;
+    --color-surface: #060e20;
+    --color-surface-dim: #060e20;
+    --color-surface-container-lowest: #000000;
+    --color-surface-container-low: #091328;
+    --color-surface-container: #0f1930;
+    --color-surface-container-high: #141f38;
+    --color-surface-container-highest: #192540;
+    --color-surface-bright: #1f2b49;
+    --color-surface-variant: #192540;
+    --color-surface-tint: #91abff;
+    --color-foreground: #dee5ff;
+    --color-on-surface: #dee5ff;
+    --color-on-surface-variant: #a3aac4;
+    --color-on-background: #dee5ff;
+    --color-inverse-on-surface: #4d556b;
+    --color-inverse-surface: #faf8ff;
+    --color-inverse-primary: #1854d7;
+    --color-primary: #91abff;
+    --color-primary-dim: #396bee;
+    --color-primary-container: #7d9cff;
+    --color-primary-fixed: #7d9cff;
+    --color-primary-fixed-dim: #688dff;
+    --color-on-primary: #002776;
+    --color-on-primary-container: #001d5c;
+    --color-on-primary-fixed: #000000;
+    --color-on-primary-fixed-variant: #002571;
+    --color-secondary: #b884ff;
+    --color-secondary-dim: #9547f7;
+    --color-secondary-container: #6e06d0;
+    --color-secondary-fixed: #e1c7ff;
+    --color-secondary-fixed-dim: #d6b6ff;
+    --color-on-secondary: #2f0060;
+    --color-on-secondary-container: #ebd8ff;
+    --color-on-secondary-fixed: #4a0090;
+    --color-on-secondary-fixed-variant: #6f08d0;
+    --color-tertiary: #81ecff;
+    --color-tertiary-dim: #00d4ec;
+    --color-tertiary-container: #00e3fd;
+    --color-tertiary-fixed: #00e3fd;
+    --color-tertiary-fixed-dim: #00d4ec;
+    --color-on-tertiary: #005762;
+    --color-on-tertiary-container: #004d57;
+    --color-on-tertiary-fixed: #003840;
+    --color-on-tertiary-fixed-variant: #005762;
+    --color-outline: #6d758c;
+    --color-outline-variant: #40485d;
+    /* Traços reais em rgba — evita fallback para currentColor (texto claro) com outline-variant/opacity no Tailwind */
+    --color-line-subtle: rgba(64, 72, 93, 0.22);
+    --color-line-field: rgba(64, 72, 93, 0.42);
+    --color-error: #ff6e84;
+    --color-error-dim: #d73357;
+    --color-error-container: #a70138;
+    --color-on-error: #490013;
+    --color-on-error-container: #ffb2b9;
+    /* DESIGN.md, sec. 4: sombra difusa #000 15%, blur 30px, Y 8px */
+    --shadow-ambient: 0 8px 30px rgba(0, 0, 0, 0.15);
+    /* CTAs / glass: brilho azul elétrico (referência hover ~0.3; base leve) */
+    --shadow-glow-primary: 0 0 20px rgba(145, 171, 255, 0.28);
+    --shadow-glow: 0 0 32px rgba(145, 171, 255, 0.12);
+    --glass-bg: rgba(31, 43, 73, 0.6);
+    --scanner-hover-bg: rgba(9, 19, 40, 0.65);
+    --scanner-hover-shadow: 0 0 24px rgba(145, 171, 255, 0.18);
+    --shadow-sticky-edge: 4px 0 12px -2px rgba(0, 0, 0, 0.28);
+  }
 
-html,
-body {
-  min-height: 100%;
-}
+  html.light {
+    color-scheme: light;
+    /* Crystal Matrix — raios maiores + full = pill (export claro) */
+    --radius-default: 0.25rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-full: 9999px;
+    --color-background: #f5f6f7;
+    --color-surface: #f5f6f7;
+    --color-surface-dim: #d1d5d7;
+    --color-surface-container-lowest: #ffffff;
+    --color-surface-container-low: #eff1f2;
+    --color-surface-container: #e6e8ea;
+    --color-surface-container-high: #e0e3e4;
+    --color-surface-container-highest: #dadddf;
+    --color-surface-bright: #f5f6f7;
+    --color-surface-variant: #dadddf;
+    --color-surface-tint: #0059b6;
+    --color-foreground: #2c2f30;
+    --color-on-surface: #2c2f30;
+    --color-on-surface-variant: #595c5d;
+    --color-on-background: #2c2f30;
+    --color-inverse-on-surface: #9b9d9e;
+    --color-inverse-surface: #0c0f10;
+    --color-inverse-primary: #448fff;
+    --color-primary: #0059b6;
+    --color-primary-dim: #004da0;
+    --color-primary-container: #68a0ff;
+    --color-primary-fixed: #68a0ff;
+    --color-primary-fixed-dim: #4b92ff;
+    --color-on-primary: #eff2ff;
+    --color-on-primary-container: #00224d;
+    --color-on-primary-fixed: #000000;
+    --color-on-primary-fixed-variant: #002b5e;
+    --color-secondary: #4c5c7b;
+    --color-secondary-dim: #40506f;
+    --color-secondary-container: #c7d7fd;
+    --color-secondary-fixed: #c7d7fd;
+    --color-secondary-fixed-dim: #bac9ee;
+    --color-on-secondary: #eff2ff;
+    --color-on-secondary-container: #3b4b6a;
+    --color-on-secondary-fixed: #283856;
+    --color-on-secondary-fixed-variant: #455474;
+    --color-tertiary: #873c95;
+    --color-tertiary-dim: #792f88;
+    --color-tertiary-container: #eb97f7;
+    --color-tertiary-fixed: #eb97f7;
+    --color-tertiary-fixed-dim: #dc8ae9;
+    --color-on-tertiary: #ffeefc;
+    --color-on-tertiary-container: #5a0d6a;
+    --color-on-tertiary-fixed: #380045;
+    --color-on-tertiary-fixed-variant: #641a74;
+    --color-outline: #757778;
+    --color-outline-variant: #abadae;
+    --color-line-subtle: rgba(171, 173, 174, 0.45);
+    --color-line-field: rgba(171, 173, 174, 0.65);
+    --color-error: #b31b25;
+    --color-error-dim: #9f0519;
+    --color-error-container: #fb5151;
+    --color-on-error: #ffefee;
+    --color-on-error-container: #570008;
+    --shadow-ambient: 0 20px 40px rgba(0, 89, 182, 0.06);
+    --shadow-glow-primary: 0 8px 24px rgba(0, 89, 182, 0.12);
+    --shadow-glow: 0 12px 32px rgba(44, 47, 48, 0.08);
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --scanner-hover-bg: rgba(0, 89, 182, 0.06);
+    --scanner-hover-shadow: 0 8px 20px rgba(0, 89, 182, 0.1);
+    --shadow-sticky-edge: 4px 0 14px -4px rgba(44, 47, 48, 0.12);
+  }
 
-body {
-  @apply bg-background text-on-surface font-body antialiased;
+  html {
+    background-color: var(--color-background);
+  }
+
+  html,
+  body {
+    min-height: 100%;
+  }
+
+  body {
+    margin: 0;
+    color: var(--color-on-background);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    @apply font-body antialiased;
+  }
+
+  html:not(.light) body {
+    background-color: var(--color-background);
+    background-image:
+      radial-gradient(
+        ellipse 120% 70% at 50% -12%,
+        rgba(57, 107, 238, 0.16) 0%,
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse 60% 50% at 100% 30%,
+        rgba(0, 227, 253, 0.07) 0%,
+        transparent 45%
+      );
+    background-attachment: fixed;
+  }
+
+  html.light body {
+    background-color: var(--color-background);
+    background-image: radial-gradient(
+      ellipse 100% 55% at 50% 0%,
+      rgba(0, 89, 182, 0.09) 0%,
+      transparent 50%
+    );
+    background-attachment: fixed;
+  }
+
+  html:not(.light) ::selection {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+  }
+
+  html.light ::selection {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+  }
+
+  html:not(.light) {
+    scrollbar-color: #192540 #060e20;
+    scrollbar-width: thin;
+  }
+
+  html:not(.light) ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  html:not(.light) ::-webkit-scrollbar-track {
+    background: #060e20;
+  }
+
+  html:not(.light) ::-webkit-scrollbar-thumb {
+    background: #192540;
+    border-radius: 10px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-manrope), system-ui, sans-serif;
+  }
 }
 
 @layer utilities {
   .glass-panel {
-    background: rgba(44, 59, 73, 0.4);
+    background: var(--glass-bg);
+    border: 1px solid rgba(145, 171, 255, 0.14);
+    border-radius: var(--radius-xl);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: var(--shadow-ambient);
+  }
+
+  html.light .glass-panel {
+    border: 1px solid rgba(0, 89, 182, 0.1);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 242, 255, 0.1);
   }
 
   .glass-card {
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(34, 211, 238, 0.1);
+    background: var(--glass-bg);
+    border: 1px solid rgba(109, 117, 140, 0.2);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  html.light .glass-card {
+    border: 1px solid rgba(171, 173, 174, 0.45);
+  }
+
+  /** Cartões de página (config, blocos) — borda e brilho sem mudar semântica */
+  .ui-surface-raised {
+    @apply rounded-2xl border border-line-subtle bg-surface-container shadow-ambient backdrop-blur-sm;
   }
 
   .scanner-hover {
-    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
   }
 
   .scanner-hover:hover {
-    box-shadow: 0 0 24px rgba(0, 242, 255, 0.12);
-    border-color: rgba(0, 242, 255, 0.25);
+    box-shadow: var(--scanner-hover-shadow);
+    background-color: var(--scanner-hover-bg);
+  }
+
+  .primary-gradient {
+    background: linear-gradient(135deg, var(--color-primary-dim) 0%, var(--color-primary-container) 100%);
   }
 }
